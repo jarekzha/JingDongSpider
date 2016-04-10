@@ -5,17 +5,23 @@ Created on 2016年4月9日
 
 @author: jarekzhang
 '''
-import urllib2
-import config
 
+import config
+from jdItemPage import JDItemPage
+import codecs
+  
 if __name__ == '__main__':
-    ''' 请求数据 '''
-    request = urllib2.Request(config.URL)
-    response = urllib2.urlopen(request)
-    content = response.read()
+        
+    ''' 解析页面 '''
+    itemPage = JDItemPage(config.URL)
+    itemPage.parsePage()
     
     ''' 写日志 '''
-    with open(config.LOG_FILE, 'w') as logFile:
-        logFile.write(content)
+    with codecs.open(config.LOG_FILE, 'a', 'utf-8') as logFile:
+        infoStr = u'itemID:%s, itemName:%s, price:%s, inStock:%s' % (itemPage.itemID, 
+            itemPage.itemName, itemPage.price, itemPage.inStock)
+        logFile.write(infoStr)
+        
+         
     
-    
+
