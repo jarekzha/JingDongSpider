@@ -8,20 +8,21 @@ Created on 2016年4月9日
 
 import config
 from jdItemPage import JDItemPage
+from mysqlSaver import MysqlSaver
 import codecs
   
 if __name__ == '__main__':
-        
     ''' 解析页面 '''
     itemPage = JDItemPage(config.URL)
     itemPage.parsePage()
     
     ''' 写日志 '''
     with codecs.open(config.LOG_FILE, 'a', 'utf-8') as logFile:
-        infoStr = u'itemID:%s, itemName:%s, price:%s, inStock:%s' % (itemPage.itemID, 
+        infoStr = u'itemID:%s, itemName:%s, price:%s, inStock:%s \n' % (itemPage.itemID, 
             itemPage.itemName, itemPage.price, itemPage.inStock)
         logFile.write(infoStr)
-        
-         
+    
+    saver = MysqlSaver()
+    saver.execute(itemPage)
     
 

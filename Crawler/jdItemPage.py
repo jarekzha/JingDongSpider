@@ -8,7 +8,6 @@ Created on 2016年4月9日
 import urllib2
 from lxml import etree
 import json
-from platform import system
 
 class JDItemPage(object):
     '''
@@ -37,6 +36,12 @@ class JDItemPage(object):
         self._parseItemName()       
         self._parseItemPrice()
         self._parseItemStock()
+    
+        
+    def sqlInsertStr(self):
+        pageData = (self.itemID, self.itemName, self.price, self.inStock)
+        insertSqlFormat = u"INSERT INTO item SET time=now(), item_id='%s', item_name='%s', price=%s, in_stock=%d"
+        return insertSqlFormat % pageData 
     
         
     def _parseItemID(self):
@@ -75,4 +80,4 @@ class JDItemPage(object):
         pageContent = response.read().decode('GBK')
         return pageContent
         
-        
+    

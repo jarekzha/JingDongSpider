@@ -12,4 +12,10 @@ URL=u'http://item.jd.com/1019707.html'
 ''' 日志文件 '''
 LOG_FILE = u'JingDong.log'
 
+''' mysql配置'''
+MYSQL_HOST = '192.168.31.2'
+MYSQL_USER = 'jarek'
+MYSQL_PASSWD = 'jarek'
+MYSQL_DB = 'jingdongspider'
+
 
