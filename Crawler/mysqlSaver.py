@@ -22,10 +22,6 @@ class MysqlSaver(object):
     def execute(self, jdItemPage):
         cursor = self.conn.cursor()
         
-        #cursor.execute('SET NAMES utf8;') 
-        #cursor.execute('SET CHARACTER SET utf8;')
-        #cursor.execute('SET character_set_connection=utf8;')
-        
         insertSql = jdItemPage.sqlInsertStr()
         cursor.execute(insertSql)
         
