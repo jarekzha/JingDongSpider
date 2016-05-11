@@ -7,15 +7,23 @@ Created on 2016年4月25日
 '''
 
 from flask import Flask
-from Monitor import jdItemPage
+from Monitor import jdItem
 
 
 app = Flask(__name__)
 
 @app.route('/')
-def hello_world():
+def routeHelloWorld():
     return 'Hello World!'
 
+@app.route('/item')
+def routeItem():
+    itemList = jdItem.ReadAllFromMysql(1019707)
+    ret = ""
+    for item in itemList:
+        ret += (" %s" % (item.inStock))
+        
+    return ret
+    
 if __name__ == '__main__':
-    #app.run()
-    jdItemPage.ReadAllFromMysql()
+    app.run(debug=True)

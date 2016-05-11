@@ -19,8 +19,7 @@ class MysqlConn(object):
         self.conn = MySQLdb.connect(config.MYSQL_HOST, config.MYSQL_USER, config.MYSQL_PASSWD, config.MYSQL_DB)
         self.conn.set_character_set('utf8')
     
-    #def __del__(self):
-    #    self.conn.close()
-
     def getCursor(self):
         return self.conn.cursor()
+    
+    

@@ -5,6 +5,6 @@ encoding//Crawler/jdItemPage.py=utf-8
 encoding//Crawler/mysqlSaver.py=utf-8
 encoding//Monitor/common/singleton.py=utf-8
 encoding//Monitor/config.py=utf-8
-encoding//Monitor/jdItemPage.py=utf-8
+encoding//Monitor/jdItem.py=utf-8
 encoding//Monitor/main.py=utf-8
 encoding//Monitor/mysqlConn.py=utf-8
